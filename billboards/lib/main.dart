@@ -1,3 +1,4 @@
+import 'package:billboards/card.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,10 +10,32 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
+        fontFamily: 'SpaceGrotesk',
+        brightness: Brightness.dark,
+      ),
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: Wrap(
+            children: [1, 2, 3, 4]
+                .map((e) => Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      margin: EdgeInsets.all(8),
+                      clipBehavior: Clip.antiAlias,
+                      width: 300,
+                      height: 400,
+                      child: OnionCard(),
+                    ))
+                .toList(),
+          ),
         ),
       ),
     );
